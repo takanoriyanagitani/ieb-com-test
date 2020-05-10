@@ -34,3 +34,9 @@ jobs:
 
     - name: check cscript
       run: cscript /?
+
+    - name: set ie
+      run: |
+        $ie = New-Object -ComObject InternetExplorer.Application
+        $ie.Navigate("https://www.google.com")
+        $ie.Document.Title | findstr "^Google$"
