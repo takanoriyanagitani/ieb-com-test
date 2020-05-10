@@ -45,4 +45,6 @@ jobs:
       run: |
         $ie = New-Object -ComObject InternetExplorer.Application
         $ie.Navigate("https://www.google.com")
+        $cnt = 64
+        while(-not $ie.Document.Title -eq "Google" -and $cnt -gt 0){ $cnt--; sleep 1 }
         $ie.Document.Title | findstr "^Google$"
